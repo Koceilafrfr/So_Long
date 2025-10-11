@@ -6,11 +6,43 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 20:03:22 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/11 20:09:25 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/11 21:54:11 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
+
+static void	free_textures(t_game *game)
+{
+	
+}
+
+void	exit_game(t_game *game, int status)
+{
+	int	i;
+
+	if (!game)
+		exit(status);
+	if (game->map)
+	{
+		i = 0;
+		while (game->map[i])
+		{
+			free(game->map[i]);
+			i++;
+		}
+		free(game->map);
+	}
+	free_textures(game);
+	exit(status);
+}
+
+void	init_game(t_game *game, char *filename)
+{
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		exit_game(game, 1);
+}
 
 void	init(t_game *game)
 {

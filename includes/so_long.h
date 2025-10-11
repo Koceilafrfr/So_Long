@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 19:35:33 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/11 20:41:06 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/11 21:47:07 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # include <stdlib.h>
 # include "../libft/libft.h"
+# include "../printf/ft_printf.h"
 # include "../gnl/get_next_line.h"
 # include <fcntl.h>
 # include <string.h>
