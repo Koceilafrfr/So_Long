@@ -6,15 +6,54 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 20:03:22 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/11 21:54:11 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/12 16:22:17 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
+void	start_player_pos(t_game *game)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (game->map[y])
+	{
+		x = 0;
+		while (game->map[y][x])
+		{
+			if (game->map[y][x] == 'P')
+			{
+				game->player_x = x;
+				game->player_y = y;
+				return ;
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
 static void	free_textures(t_game *game)
 {
-	
+	if (game->collectible_img)
+		mlx_destroy_image(game->mlx, game->collectible_img);
+	if (game->player_img)
+		mlx_destroy_image(game->mlx, game->player_img);
+	if (game->wall_img)
+		mlx_destroy_image(game->mlx, game->wall_img);
+	if (game->floor_img)
+		mlx_destroy_image(game->mlx, game->floor_img);
+	if (game->exit_img)
+		mlx_destroy_image(game->mlx, game->exit_img);
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
 }
 
 void	exit_game(t_game *game, int status)
@@ -42,6 +81,23 @@ void	init_game(t_game *game, char *filename)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		exit_game(game, 1);
+	game->map = get_map(filename);
+	if (!game->map)
+	{
+		ft_printf("Incorrect map\n");
+		exit_game(game, 1);
+	}
+	game->height = 0;
+	while (game->map[game->height])
+		game->height++;
+	game->width = ft_strlen(game->map[0]);
+	game->win = mlx_new_window(game->mlx, game->width * TILE_SIZE,
+			game->height * TILE_SIZE, "so_long");
+	if (!game->win)
+		exit_game(game, 1);
+	game->moves = 0;
+	start_player_pos(game);
+	exit_pos(game);
 }
 
 void	init(t_game *game)

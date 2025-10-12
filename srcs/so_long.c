@@ -6,14 +6,17 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 19:36:40 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/06 19:37:17 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/12 18:02:13 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "includes/so_long.h"
+
 int	main(int ac, char **av)
 {
-	if (ac == 2)
+	if (ac != 2)
 	{
-		
+		ft_printf("Check args : ./so_long .ber");
+		return (0);
 	}
 }
