@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 19:35:33 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/12 17:40:43 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/12 18:04:26 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include <stdarg.h>
 # include <mlx.h>
 
-typedef struct s_game {
+typedef struct s_data {
 	char	**map;
 	void	*win;
 	void	*mlx;
@@ -45,7 +45,7 @@ typedef struct s_game {
 	int		exit_x;
 	int		exit_y;
 	int		height;
-}	t_game;
+}	t_data;
 
 //parsing
 

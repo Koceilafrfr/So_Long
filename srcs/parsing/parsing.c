@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 19:37:32 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/11 20:41:18 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/12 18:05:03 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static int	file_name(char *filename)
 	return (0);
 }
 
-void	parsing(char **map, char *filename, t_game game)
+void	parsing(char **map, char *filename, t_data *game)
 {
 	file_name(filename);
 	is_rect(map);

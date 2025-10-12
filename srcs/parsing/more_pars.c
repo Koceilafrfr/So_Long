@@ -6,13 +6,13 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 17:45:17 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/12 17:46:15 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/12 18:04:51 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-static int	content_utils(char **map, t_game *game, int *exit, int *player)
+static int	content_utils(char **map, t_data *game, int *exit, int *player)
 {
 	int	i;
 	int	j;
@@ -38,7 +38,7 @@ static int	content_utils(char **map, t_game *game, int *exit, int *player)
 	return (1);
 }
 
-int	content_verif(char **map, t_game *game)
+int	content_verif(char **map, t_data *game)
 {
 	int	exit;
 	int	player;
@@ -54,7 +54,7 @@ int	content_verif(char **map, t_game *game)
 	return (1);
 }
 
-int	size_map(t_game *game)
+int	size_map(t_data *game)
 {
 	int	screen_width;
 	int	screen_heitgh;
