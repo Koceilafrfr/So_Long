@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 19:37:32 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/12 20:05:03 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/12 20:08:39 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	has_walls(char **map)
 	return (1);
 }
 
-static int	first_last_row(char *row)
+int	first_last_row(char *row)
 {
 	int	i;
 
@@ -62,7 +62,7 @@ static int	is_rect(char **map)
 	i = 1;
 	while (map[i])
 	{
-		if ((int)ft_strlen(map[i]) != map[len])
+		if ((int)ft_strlen(map[i]) != len)
 			return (0);
 		i++;
 	}

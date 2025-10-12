@@ -1,29 +1,19 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/10/12 19:50:57 by yzidani           #+#    #+#              #
-#    Updated: 2025/10/12 19:51:02 by yzidani          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = so_long
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iincludes -Ilibft -Iprintf -Iminilibx-linux
 
-LIBFT_DIR = libft
-PRINTF_DIR = printf
-MLX_DIR = minilibx-linux
-SRC_DIR = srcs
-OBJ_DIR = obj
+RED				= \e[31m
+GREEN			= \e[32m
+YELLOW			= \e[33m
+BLUE			= \e[34m
+MAGENTA			= \e[35m
+CYAN			= \e[36m
+RESET			= \e[m
 
-# === Source files ===
+SRC_DIR = srcs/
 
+GNL = $(GNL_DIR)/get_next_line.a
+LIBFT = $(LIBFT_DIR)/libft.a
 SRCS = \
-	$(SRC_DIR)/so_long.c \
+	$(SRC_DIR)/so_long.c \ga
 	$(SRC_DIR)/setup/setup.c \
 	$(SRC_DIR)/setup/setup2.c \
 	$(SRC_DIR)/setup/moves.c \
@@ -33,48 +23,53 @@ SRCS = \
 	$(SRC_DIR)/parsing/too_much_pars.c \
 	gnl/get_next_line.c \
 	gnl/get_next_line_utils.c
+OBJS = $(SRCS:%.c=build/%.o)
 
-# === Object files ===
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 
-OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
+ifeq ($(shell uname), Linux)
+	INCLUDES = -I/usr/include -Imlx
+else
+	INCLUDES = -I/opt/X11/include -Imlx
+endif
 
-# === Libraries ===
+MLX_DIR = mlx/
+MLX_LIB = mlx/libmlx_$(shell uname).a
 
-LIBFT = $(LIBFT_DIR)/libft.a
-PRINTF = $(PRINTF_DIR)/libftprintf.a
-MLX = -L$(MLX_DIR) -lmlx -lXext -lX11
-
-# === Rules ===
+ifeq ($(shell uname), Linux)
+	MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+else
+	MLX_FLAGS = -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
+endif
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(PRINTF) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) $(MLX) -o $(NAME)
+$(NAME): $(OBJS) $(MLX_LIB) $(LIB) $(GNL)
+	@echo "$(GREEN)Linking $@$(NO_COLOR)"
+	@$(CC) $(CFLAGS) -o $@ $^ $(MLX_FLAGS) 
+	@echo "$(GREEN)Build complete$(NO_COLOR)"
 
-$(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
 
-$(PRINTF):
-	$(MAKE) -C $(PRINTF_DIR)
+$(OBJS): | build
 
-# === Compilation of object files with folder creation ===
+build:
+	@mkdir -p build
 
-$(OBJ_DIR)/%.o: %.c
+build/%.o: %.c
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-# === Clean rules ===
+	@echo "$(YELLOW)Compiling $<$(NO_COLOR)"
+	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
 
 clean:
-	$(MAKE) clean -C $(LIBFT_DIR)
-	$(MAKE) clean -C $(PRINTF_DIR)
-	rm -rf $(OBJ_DIR)
+	@echo "$(RED)Cleaning object files$(NO_COLOR)"
+	@rm -rf build
 
 fclean: clean
-	$(MAKE) fclean -C $(LIBFT_DIR)
-	$(MAKE) fclean -C $(PRINTF_DIR)
-	rm -f $(NAME)
+	@echo "$(RED)Cleaning executable$(NO_COLOR)"
+	@rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re 
+

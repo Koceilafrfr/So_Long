@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 12:35:14 by yzidani           #+#    #+#             */
-/*   Updated: 2025/07/02 02:16:37 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/12 20:40:03 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ void	clean_stash(t_list **stash)
 	if (last->content && last->content[i] == '\n')
 		i++;
 	clean_node->content = \
-		malloc(sizeof(char) * (ft_strlen(last->content) - i) + 1);
+		malloc(sizeof(char) * ((int)ft_strlen(last->content) - i) + 1);
 	if (clean_node->content == NULL)
 		return ;
 	j = 0;

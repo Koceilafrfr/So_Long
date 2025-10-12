@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:13:33 by yzidani           #+#    #+#             */
-/*   Updated: 2025/07/02 01:58:25 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/12 20:40:38 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	generate_line(char **line, t_list *stash)
 		return ;
 }
 
-int	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	int	len;
 

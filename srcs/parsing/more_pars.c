@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 17:45:17 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/12 18:04:51 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/12 20:31:54 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static int	content_utils(char **map, t_data *game, int *exit, int *player)
 		while (map[i][j])
 		{
 			if (map[i][j] == 'P')
-				(*player++);
+				(*player)++;
 			else if (map[i][j] == 'E')
-				(*exit++);
+				(*exit)++;
 			else if (map[i][j] == 'C')
 				game->collectibles++;
 			else if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != '\n')

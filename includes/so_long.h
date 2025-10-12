@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 19:35:33 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/12 19:52:51 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/12 20:06:37 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int		parsing(char **map, char *filename, t_data *game);
 int		size_map(t_data *game);
 int		content_verif(char **map, t_data *game);
 int		is_doable(char **map);
+int		first_last_row(char *row);
 char	**get_map(char *filename);
 
 //setup

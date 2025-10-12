@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 19:08:49 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/11 20:00:23 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/12 20:32:56 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ static void	player_pos(char **map, int *player_y, int *player_x)
 	int	j;
 
 	i = 0;
-	player_y = -1;
-	player_x = -1;
+	*player_y = -1;
+	*player_x = -1;
 	while (map[i])
 	{
 		j = 0;
@@ -58,8 +58,8 @@ static void	player_pos(char **map, int *player_y, int *player_x)
 		{
 			if (map[i][j] == 'P')
 			{
-				player_y = i;
-				player_x = j;
+				*player_y = i;
+				*player_x = j;
 				return ;
 			}
 			j++;
