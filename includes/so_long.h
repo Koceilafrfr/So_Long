@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 19:35:33 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/12 18:04:26 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/12 18:06:05 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,15 @@ typedef struct s_data {
 
 //parsing
 
-void	parsing(char **map, char *filename, t_game game);
-int		size_map(t_game game);
-int		content_verif(char **map, t_game game);
+void	parsing(char **map, char *filename, t_data game);
+int		size_map(t_data game);
+int		content_verif(char **map, t_data game);
 int		is_doable(char **map);
 char	**get_map(char *filename);
 
 //setup
 
-void	exit_pos(t_game *game);
-void	load_img(t_game *game);
+void	exit_pos(t_data *game);
+void	load_img(t_data *game);
 
 #endif
