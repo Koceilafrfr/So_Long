@@ -6,13 +6,19 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 16:22:38 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/12 17:59:55 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/12 19:40:47 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-static void	render_tile(t_game *game, int x, int y)
+int	exit_cross(t_data *game)
+{
+	exit_game(game, 0);
+	return (0);
+}
+
+static void	render_tile(t_data *game, int x, int y)
 {
 	mlx_put_image_to_window(game->mlx, game->win,
 		game->floor_img, x * 64, y * 64);
@@ -30,7 +36,7 @@ static void	render_tile(t_game *game, int x, int y)
 			game->player_img, x * 64, y * 64);
 }
 
-void	render_map(t_game *game)
+void	render_map(t_data *game)
 {
 	int	x;
 	int	y;
@@ -48,7 +54,7 @@ void	render_map(t_game *game)
 	}
 }
 
-void	load_img(t_game *game)
+void	load_img(t_data *game)
 {
 	int	img_width;
 	int	img_height;
@@ -71,7 +77,7 @@ void	load_img(t_game *game)
 	}
 }
 
-void	exit_pos(t_game *game)
+void	exit_pos(t_data *game)
 {
 	int	y;
 	int	x;

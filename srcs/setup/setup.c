@@ -6,13 +6,13 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 20:03:22 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/12 16:22:17 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/12 18:07:36 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-void	start_player_pos(t_game *game)
+void	start_player_pos(t_data *game)
 {
 	int	y;
 	int	x;
@@ -35,7 +35,7 @@ void	start_player_pos(t_game *game)
 	}
 }
 
-static void	free_textures(t_game *game)
+static void	free_textures(t_data *game)
 {
 	if (game->collectible_img)
 		mlx_destroy_image(game->mlx, game->collectible_img);
@@ -56,7 +56,7 @@ static void	free_textures(t_game *game)
 	}
 }
 
-void	exit_game(t_game *game, int status)
+void	exit_game(t_data *game, int status)
 {
 	int	i;
 
@@ -76,7 +76,7 @@ void	exit_game(t_game *game, int status)
 	exit(status);
 }
 
-void	init_game(t_game *game, char *filename)
+void	init_game(t_data *game, char *filename)
 {
 	game->mlx = mlx_init();
 	if (!game->mlx)
@@ -100,7 +100,7 @@ void	init_game(t_game *game, char *filename)
 	exit_pos(game);
 }
 
-void	init(t_game *game)
+void	init(t_data *game)
 {
 	game->map = NULL;
 	game->mlx = NULL;
