@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 19:35:33 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/12 18:06:05 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/12 19:52:51 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@
 # define SO_LONG_H
 
 # define TILE_SIZE 64
+
+# define KEY_ESC 65307
+# define KEY_UP 65362
+# define KEY_DOWN 65364
+# define KEY_LARGO 65361
+# define KEY_RIGHT 65363
+# define KEY_W 119
+# define KEY_S 115
+# define KEY_A 97
+# define KEY_D 100
 
 # include <stdlib.h>
 # include "../libft/libft.h"
@@ -44,20 +54,29 @@ typedef struct s_data {
 	int		width;
 	int		exit_x;
 	int		exit_y;
-	int		height;
 }	t_data;
 
 //parsing
 
-void	parsing(char **map, char *filename, t_data game);
-int		size_map(t_data game);
-int		content_verif(char **map, t_data game);
+int		parsing(char **map, char *filename, t_data *game);
+int		size_map(t_data *game);
+int		content_verif(char **map, t_data *game);
 int		is_doable(char **map);
 char	**get_map(char *filename);
 
 //setup
 
+void	init(t_data *game);
+int		exit_cross(t_data *game);
+void	init_game(t_data *game, char *filename);
+void	exit_game(t_data *game, int status);
 void	exit_pos(t_data *game);
 void	load_img(t_data *game);
+void	render_map(t_data *game);
+
+//move
+
+void	move_player(t_data *game, int dy, int dx);
+int		handle_key(int keycode, t_data *game);
 
 #endif

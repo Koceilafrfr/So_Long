@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 18:52:03 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/12 19:26:52 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/12 19:58:03 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static int	handle_move(t_data *game, int new_x, int new_y)
 	game->moves++;
 	ft_printf("Moves : %d\n", game->moves);
 	render_map(game);
+	return (1);
 }
 
 void	move_player(t_data *game, int dy, int dx)

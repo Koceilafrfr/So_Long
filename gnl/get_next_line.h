@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 12:33:12 by yzidani           #+#    #+#             */
-/*   Updated: 2025/06/27 04:56:09 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/12 19:56:55 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	extract_line(t_list *stash, char **line);
 void	generate_line(char **line, t_list *stash);
 void	clean_line(char **line, t_list *stash);
 void	clean_stash(t_list **stash);
-int		ft_strlen(const char *str);
+//int		ft_strlen(const char *str);
 void	free_stash(t_list *stash);
 
 #endif
