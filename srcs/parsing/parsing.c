@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 19:37:32 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/13 16:23:06 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/13 19:51:49 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static int	file_name(char *filename)
 	int	cmp;
 
 	len = ft_strlen(filename);
-	cmp = ft_strncmp(filename + len - 4, ".ber", 4);
+	cmp = ft_strncmp(&filename[len - 4], ".ber", 4);
 	if (cmp == 0)
 		return (1);
 	return (0);
@@ -84,21 +84,16 @@ static int	file_name(char *filename)
 int	parsing(char **map, char *filename, t_data *game)
 {
 	if (!file_name(filename))
-		ft_printf("erreur mom\n");
-	if (!is_rect(map))
-		ft_printf("erreur rect\n");
-	if (!has_walls(map))
-		ft_printf("erreur wall\n");
-	if (!size_map(game))
-		ft_printf("erreur taille\n");
-	if (!content_verif(map, game))
-		ft_printf("erreur content\n");
+		return (ft_printf("Wrong file name\n"), 0);
 	if (!is_doable(map))
-		ft_printf("erreur faisabilite\n");
+		return (ft_printf("erreur faisabilite\n"), 0);
+	if (!has_walls(map))
+		return (ft_printf("erreur wall\n"), 0);
+	if (!is_rect(map))
+		return (ft_printf("wrong shape rect\n"), 0);
+	if (!size_map(game))
+		return (ft_printf("erreur taille\n"), 0);
+	if (!content_verif(map, game))
+		return (ft_printf("erreur content\n"), 0);
 	return (1);
 }
-
-/*
-se servir de calloc plutot que malloc
-utiliser get next line pour lire la map
-*/

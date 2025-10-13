@@ -1,0 +1,16 @@
+int	parsing(char **map, char *filename, t_data *game)
+{
+	if (!file_name(filename))
+		return (ft_printf("Wrong file name\n"), 0);
+	if (!has_walls(map))
+		return (ft_printf("erreur wall\n"), 0);
+	if (!is_rect(map))
+		return (ft_printf("wrong shape rect\n"), 0);
+	if (!size_map(game))
+		return (ft_printf("erreur taille\n"), 0);
+	if (!content_verif(map, game))
+		return (ft_printf("erreur content\n"), 0);
+	if (!is_doable(map))
+		return (ft_printf("erreur faisabilite\n"), 0);
+	return (1);
+}

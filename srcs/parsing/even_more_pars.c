@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 19:08:49 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/13 17:35:54 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/13 20:03:03 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,14 @@ static int	is_all_reachable(char **map)
 	return (1);
 }
 
-static void	ft_flood_fill(char **map, int y, int x)
+static void	ft_flood_fill(char **map, int y, int x, t_data *game)
 {
-	if (map[y][x] == '1' || map[y][x] == 'V')
+	int	test;
+
+	test = game->collectibles;
+
+	if (map[y][x] == '1' || map[y][x] == 'V' || map[y][x] == 'E' ||
+		map[y][x] == 'P' || map[y][x] == 'C')
 		return ;
 	map[y][x] = 'V';
 	ft_flood_fill(map, y + 1, x);
@@ -113,5 +118,5 @@ int	is_doable(char **map)
 		return (0);
 	}
 	free_tab(map_cpy);
-	return (1);
+	return (6);
 }

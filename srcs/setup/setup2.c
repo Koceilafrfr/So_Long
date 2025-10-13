@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 16:22:38 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/13 17:40:36 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/13 18:55:53 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	render_map(t_data *game)
 	while (y < game->height)
 	{
 		x = 0;
-		while (x < game->height)
+		while (x < game->width)
 		{
 			render_tile(game, x, y);
 			x++;
@@ -59,7 +59,6 @@ void	load_img(t_data *game)
 	int	img_width;
 	int	img_height;
 
-	ft_printf("test\n");
 	game->player_img = mlx_xpm_file_to_image(game->mlx,
 			"sprites/player.xpm", &img_width, &img_height);
 	game->exit_img = mlx_xpm_file_to_image(game->mlx,

@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 17:45:17 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/12 20:31:54 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/13 19:26:59 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	content_verif(char **map, t_data *game)
 		return (0);
 	if (player != '1' || exit != '1' || game->collectibles < 1)
 		return (0);
-	return (1);
+	return (5);
 }
 
 int	size_map(t_data *game)
@@ -68,5 +68,5 @@ int	size_map(t_data *game)
 	mlx_get_screen_size(game->mlx, &screen_width, &screen_heitgh);
 	if (map_width_px > screen_width || map_height_px > screen_heitgh)
 		return (0);
-	return (1);
+	return (4);
 }
