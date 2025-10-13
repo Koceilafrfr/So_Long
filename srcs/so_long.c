@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 19:36:40 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/12 19:57:39 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/13 17:38:05 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int ac, char **av)
 {
 	t_data	*game;
 
-	game = NULL;
+	game = malloc(sizeof(t_data));
 
 	if (ac != 2)
 	{
@@ -32,6 +32,7 @@ int	main(int ac, char **av)
 	}
 	if (!parsing(game->map, av[1], game))
 		exit_game(game, 1);
+	ft_printf("test\n");
 	load_img(game);
 	render_map(game);
 	mlx_key_hook(game->win, handle_key, game);

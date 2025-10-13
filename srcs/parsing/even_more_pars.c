@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 19:08:49 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/12 20:32:56 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/13 17:35:54 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	is_all_reachable(char **map)
 
 static void	ft_flood_fill(char **map, int y, int x)
 {
-	if (map[y][x] == 1 || map[y][x] == 'V')
+	if (map[y][x] == '1' || map[y][x] == 'V')
 		return ;
 	map[y][x] = 'V';
 	ft_flood_fill(map, y + 1, x);

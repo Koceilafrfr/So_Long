@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 16:22:38 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/12 19:40:47 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/13 17:40:36 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	load_img(t_data *game)
 	int	img_width;
 	int	img_height;
 
+	ft_printf("test\n");
 	game->player_img = mlx_xpm_file_to_image(game->mlx,
 			"sprites/player.xpm", &img_width, &img_height);
 	game->exit_img = mlx_xpm_file_to_image(game->mlx,
