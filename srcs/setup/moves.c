@@ -6,11 +6,23 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 18:52:03 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/12 19:58:03 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/15 19:20:58 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
+
+static int	check_exit(t_data *game, int new_x, int new_y)
+{
+	if (game->map[new_y][new_x] != 'E')
+		return (1);
+	if (game->collectibles == 0)
+	{
+		ft_printf("Success\nScore : %d Moves\n", game->moves + 1);
+		exit_game(game, 0);
+	}
+	return (0);
+}
 
 static int	handle_move(t_data *game, int new_x, int new_y)
 {
@@ -19,15 +31,13 @@ static int	handle_move(t_data *game, int new_x, int new_y)
 		game->collectibles--;
 		game->map[new_y][new_x] = '0';
 	}
-	if (game->map[new_y][new_x] == 'E' && game->collectibles == 0)
-	{
-		ft_printf("Success\nScore : %d Moves\n", game->moves + 1);
-		exit_game(game, 0);
-	}
+	if (!check_exit(game, new_x, new_y))
+		return (0);
 	if (game->map[game->player_y][game->player_x] == 'E')
+		game->map[game->player_y][game->player_x] = 'E';
+	else
 		game->map[game->player_y][game->player_x] = '0';
-	if (game->map[new_y][new_x] == 'E')
-		game->map[new_y][new_x] = 'P';
+	game->map[new_y][new_x] = 'P';
 	game->player_x = new_x;
 	game->player_y = new_y;
 	game->moves++;

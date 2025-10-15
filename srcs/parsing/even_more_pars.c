@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 19:08:49 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/13 20:03:03 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/15 19:17:11 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,17 @@ static int	is_all_reachable(char **map)
 
 static void	ft_flood_fill(char **map, int y, int x, t_data *game)
 {
-	int	test;
-
-	test = game->collectibles;
-
-	if (map[y][x] == '1' || map[y][x] == 'V' || map[y][x] == 'E' ||
-		map[y][x] == 'P' || map[y][x] == 'C')
+	if (map[y][x] == '1' || map[y][x] == 'V')
 		return ;
-	map[y][x] = 'V';
-	ft_flood_fill(map, y + 1, x);
-	ft_flood_fill(map, y - 1, x);
-	ft_flood_fill(map, y, x + 1);
-	ft_flood_fill(map, y, x - 1);
+	if (map[y][x] == 'E' || map[y][x] == 'P' || map[y][x] == 'C'
+		|| map[y][x] == '0')
+		map[y][x] = 'V';
+	else
+		return ;
+	ft_flood_fill(map, y + 1, x, game);
+	ft_flood_fill(map, y - 1, x, game);
+	ft_flood_fill(map, y, x + 1, game);
+	ft_flood_fill(map, y, x - 1, game);
 }
 
 static void	player_pos(char **map, int *player_y, int *player_x)
@@ -96,7 +95,7 @@ static char	**cpy_map(char **map)
 	return (cpy);
 }
 
-int	is_doable(char **map)
+int	is_doable(char **map, t_data *game)
 {
 	char	**map_cpy;
 	int		player_x;
@@ -111,12 +110,12 @@ int	is_doable(char **map)
 		free_tab(map_cpy);
 		return (0);
 	}
-	ft_flood_fill(map_cpy, player_y, player_x);
+	ft_flood_fill(map_cpy, player_y, player_x, game);
 	if (!is_all_reachable(map_cpy))
 	{
 		free_tab(map_cpy);
 		return (0);
 	}
 	free_tab(map_cpy);
-	return (6);
+	return (1);
 }

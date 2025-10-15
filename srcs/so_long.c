@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 19:36:40 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/13 17:38:05 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/15 19:25:45 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	main(int ac, char **av)
 	t_data	*game;
 
 	game = malloc(sizeof(t_data));
-
 	if (ac != 2)
 	{
 		ft_printf("Check args : ./so_long .ber");

@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 20:10:02 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/12 20:38:58 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/15 18:59:11 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 static int	fill_lines(int fd, char **map)
 {
 	int		i;
+	int		len;
 	char	*line;
 
 	i = 0;
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (line[ft_strlen(line - 1)] == '\n')
-			line[ft_strlen(line - 1)] = '\0';
+		len = ft_strlen(line);
+		if (len > 0 && line[len - 1] == '\n')
+			line[len - 1] = '\0';
 		map[i++] = line;
 		line = get_next_line(fd);
 	}

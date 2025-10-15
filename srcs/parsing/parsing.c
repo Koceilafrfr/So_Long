@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 19:37:32 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/13 19:51:49 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/15 18:59:04 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	first_last_row(char *row)
 	i = 0;
 	while (row[i])
 	{
-		if (row[i] != 1)
+		if (row[i] != '1')
 			return (0);
 		i++;
 	}
@@ -85,7 +85,7 @@ int	parsing(char **map, char *filename, t_data *game)
 {
 	if (!file_name(filename))
 		return (ft_printf("Wrong file name\n"), 0);
-	if (!is_doable(map))
+	if (!is_doable(map, game))
 		return (ft_printf("erreur faisabilite\n"), 0);
 	if (!has_walls(map))
 		return (ft_printf("erreur wall\n"), 0);
