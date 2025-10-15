@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 19:37:32 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/15 18:59:04 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/15 20:13:24 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static int	has_walls(char **map)
 	if (!map || !map[0])
 		return (0);
 	len = ft_strlen(map[0]);
+	if (len > 0 && map[0][len - 1] == '\n')
+		len--;
 	last = 0;
 	while (map[last])
 		last++;
@@ -42,7 +44,7 @@ int	first_last_row(char *row)
 	int	i;
 
 	i = 0;
-	while (row[i])
+	while (row[i] && row[i] != '\n')
 	{
 		if (row[i] != '1')
 			return (0);

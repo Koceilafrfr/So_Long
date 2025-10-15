@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 19:36:40 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/15 19:25:45 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/15 20:10:28 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,17 @@ int	main(int ac, char **av)
 {
 	t_data	*game;
 
-	game = malloc(sizeof(t_data));
 	if (ac != 2)
-	{
-		ft_printf("Check args : ./so_long .ber");
-		return (0);
-	}
+		return (ft_printf("Check args : ./so_long .ber\n"), 0);
+	game = malloc(sizeof(t_data));
+	if (!game)
+		return (1);
 	init(game);
 	init_game(game, av[1]);
 	if (!game->map)
-	{
-		ft_printf("Error map\n");
-		exit_game(game, 1);
-	}
+		return (ft_printf("Error map\n"), exit_game(game, 1), 1);
 	if (!parsing(game->map, av[1], game))
 		exit_game(game, 1);
-	ft_printf("test\n");
 	load_img(game);
 	render_map(game);
 	mlx_key_hook(game->win, handle_key, game);
