@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 20:03:22 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/12 18:07:36 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/15 20:23:29 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	exit_game(t_data *game, int status)
 		free(game->map);
 	}
 	free_textures(game);
+	free(game);
 	exit(status);
 }
 
@@ -108,6 +109,7 @@ void	init(t_data *game)
 	game->player_img = NULL;
 	game->wall_img = NULL;
 	game->floor_img = NULL;
+	game->exit_img = NULL;
 	game->collectible_img = NULL;
 	game->player_x = 0;
 	game->player_y = 0;
