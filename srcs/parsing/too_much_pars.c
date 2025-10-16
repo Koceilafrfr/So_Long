@@ -6,11 +6,28 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 20:10:02 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/15 18:59:11 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/16 14:57:22 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
+
+void	ft_flood_fill(char **map, int y, int x, int include_exit)
+{
+	if (map[y][x] == '1' || map[y][x] == 'V')
+		return ;
+	if (map[y][x] == 'E' && !include_exit)
+		return ;
+	if (map[y][x] == 'P' || map[y][x] == 'C' || map[y][x] == '0'
+		|| (map[y][x] == 'E' && include_exit))
+		map[y][x] = 'V';
+	else
+		return ;
+	ft_flood_fill(map, y + 1, x, include_exit);
+	ft_flood_fill(map, y - 1, x, include_exit);
+	ft_flood_fill(map, y, x + 1, include_exit);
+	ft_flood_fill(map, y, x - 1, include_exit);
+}
 
 static int	fill_lines(int fd, char **map)
 {

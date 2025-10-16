@@ -6,7 +6,7 @@
 /*   By: yzidani <yzidani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 19:35:33 by yzidani           #+#    #+#             */
-/*   Updated: 2025/10/15 18:59:10 by yzidani          ###   ########.fr       */
+/*   Updated: 2025/10/16 14:58:41 by yzidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int		content_verif(char **map, t_data *game);
 int		is_doable(char **map, t_data *game);
 int		first_last_row(char *row);
 char	**get_map(char *filename);
+void	ft_flood_fill(char **map, int y, int x, int include_exit);
 
 //setup
 
